@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthService", "AuthService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Domain", "AuthService.Domain\AuthService.Domain.csproj", "{A916C021-F680-435F-A228-7833E1B75CA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Application", "AuthService.Application\AuthService.Application.csproj", "{3FEA6B80-B75F-412B-825F-D4C882B64359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -11,11 +13,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A916C021-F680-435F-A228-7833E1B75CA0} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
+		{3FEA6B80-B75F-412B-825F-D4C882B64359} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEA6B80-B75F-412B-825F-D4C882B64359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEA6B80-B75F-412B-825F-D4C882B64359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEA6B80-B75F-412B-825F-D4C882B64359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEA6B80-B75F-412B-825F-D4C882B64359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
