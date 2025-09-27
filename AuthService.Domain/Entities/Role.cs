@@ -17,4 +17,10 @@ public class Role : BaseEntity
             _roleName = value;
         }
     }
+
+    public Role UpdateRole(string roleName)
+    {
+        RoleName = roleName;
+        return this;
+    }
 }

@@ -1,3 +1,3 @@
 namespace AuthService.Application.Dto;
 
-public record RoleDto(string RoleName);
+public record RoleDto(Guid Id, string RoleName);
