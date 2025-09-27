@@ -1,3 +1,3 @@
 namespace AuthService.Application.Dto;
 
-public record UserUpdateDto(string Username, string NewPassword, string OldPassword);
+public record UserUpdateDto(Guid UserId, string Username, string NewPassword, string OldPassword);
