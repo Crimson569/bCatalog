@@ -1,3 +1,5 @@
+using AuthService.Application.Interfaces.Repositories;
+using AuthService.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +21,11 @@ public static class DependencyInjectionConfiguration
                 npgsqlBuilder.MigrationsAssembly(typeof(AuthServiceDbContext).Assembly.GetName().Name);
             });
         });
+
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
         
         return services;
     }
