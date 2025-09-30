@@ -16,7 +16,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.UserName).IsRequired();
         builder.Property(u => u.UserEmail).IsRequired();
         builder.Property(u => u.PasswordHash).IsRequired();
-        builder.Property(u => u.PasswordSalt).IsRequired();
 
         builder.Property(u => u.CreatedAt).IsRequired();
         builder.Property(u => u.UpdatedAt).IsRequired();

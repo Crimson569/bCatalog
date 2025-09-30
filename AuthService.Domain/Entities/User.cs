@@ -5,14 +5,12 @@ public class User : BaseEntity
     private string _userName;
     private string _userEmail;
     private string _passwordHash;
-    private string _passwordSalt;
     private List<Role> _roles;
     
-    public User(Guid id, string userName, string passwordHash, string passwordSalt) : base(id)
+    public User(Guid id, string userName, string passwordHash) : base(id)
     {
         UserName = userName;
         PasswordHash = passwordHash;
-        PasswordSalt = passwordSalt;
     }
 
     public string UserName
@@ -38,14 +36,5 @@ public class User : BaseEntity
             _passwordHash = value; 
         }
     }
-    public string PasswordSalt
-    {
-        get => _passwordSalt;
-        private set
-        {
-            _passwordSalt = value;
-        }
-    }
-
     public IReadOnlyCollection<Role> Roles => _roles;
 }

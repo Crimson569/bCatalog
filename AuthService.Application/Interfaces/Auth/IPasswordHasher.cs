@@ -2,6 +2,6 @@ namespace AuthService.Application.Interfaces.Auth;
 
 public interface IPasswordHasher
 {
-    string Generate(string password);
+    string GenerateHash(string password);
     bool Verify(string password, string hashedPassword);
 }
