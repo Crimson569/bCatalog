@@ -1,9 +1,12 @@
 using System.Security.Claims;
 using AuthService.Application.Extensions;
 using AuthService.Infrastructure.Extensions;
+using AuthService.Infrastructure.Options;
 using AuthService.Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
