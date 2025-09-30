@@ -1,10 +1,12 @@
 using System.Security.Claims;
 using AuthService.Application.Extensions;
+using AuthService.Infrastructure.Extensions;
 using AuthService.Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
 
 // Add services to the container.
