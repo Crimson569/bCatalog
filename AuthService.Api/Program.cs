@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AuthService.Application.Extensions;
 using AuthService.Persistence.Extensions;
 
