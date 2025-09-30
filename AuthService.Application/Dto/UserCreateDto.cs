@@ -1,3 +1,3 @@
 namespace AuthService.Application.Dto;
 
-public record UserCreateDto(string Username, string Password);
+public record UserCreateDto(string Username, string UserEmail, string Password);

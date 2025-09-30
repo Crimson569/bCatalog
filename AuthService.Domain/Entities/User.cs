@@ -3,6 +3,7 @@ namespace AuthService.Domain.Entities;
 public class User : BaseEntity
 {
     private string _userName;
+    private string _userEmail;
     private string _passwordHash;
     private string _passwordSalt;
     private List<Role> _roles;
@@ -19,6 +20,16 @@ public class User : BaseEntity
         get => _userName;
         private set { _userName = value; }
     }
+
+    public string UserEmail
+    {
+        get => _userEmail;
+        set
+        {
+            _userEmail = value;
+        }
+    }
+
     public string PasswordHash
     {
         get => _passwordHash;
