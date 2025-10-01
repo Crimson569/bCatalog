@@ -38,4 +38,22 @@ public class User : BaseEntity
         }
     }
     public IReadOnlyCollection<Role> Roles => _roles;
+
+    public User UpdateUserName(string newUserName)
+    {
+        UserName = newUserName;
+        return this;
+    }
+
+    public User UpdateUserEmail(string newUserEmail)
+    {
+        UserEmail = newUserEmail;
+        return this;
+    }
+
+    public User UpdatePassword(string newPasswordHash)
+    {
+        PasswordHash = newPasswordHash;
+        return this;
+    }
 }
