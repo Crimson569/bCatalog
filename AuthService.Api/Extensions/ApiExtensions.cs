@@ -1,6 +1,7 @@
 using System.Text;
 using AuthService.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AuthService.Api.Extensions;
@@ -25,6 +26,21 @@ public static class ApiExtensions
             });
 
         services.AddAuthorization();
+        
+        return services;
+    }
+
+    public static IServiceCollection AddApiCors(this IServiceCollection services)
+    {
+        services.AddCors(o =>
+        {
+            o.AddPolicy("PolicyAny", b =>
+            {
+                b.AllowAnyHeader();
+                b.AllowAnyOrigin();
+                b.AllowAnyMethod();
+            });
+        });
         
         return services;
     }

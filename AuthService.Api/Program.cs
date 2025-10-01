@@ -16,6 +16,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
 
 builder.Services.AddApiAuthentication(builder.Configuration);
+builder.Services.AddApiCors();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -32,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
+
+app.UseCors("PolicyAny");
 
 app.MapControllers();
 
