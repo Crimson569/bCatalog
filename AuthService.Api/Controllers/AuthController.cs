@@ -1,3 +1,4 @@
+using AuthService.Application.Dto;
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Features.Users.Requests.Queries;
 using MediatR;
@@ -29,6 +30,23 @@ public class AuthController : ControllerBase
     public async Task<ActionResult> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetUserByIdRequest(){UserId = id}, cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpPost]
+    [Route("users")]
+    public async Task<ActionResult> CreateUserAsync([FromBody] UserCreateDto userDto, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new CreateUserCommand() { UserDto = userDto }, cancellationToken);
+        return Ok(result); //Заменить на Created
+    }
+
+    [HttpPut]
+    [Route("users/{id:guid}")]
+    public async Task<ActionResult> UpdateUserAsync([FromBody] UserUpdateDto userDto,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new UpdateUserCommand() { UserDto = userDto }, cancellationToken);
         return Ok(result);
     }
 
