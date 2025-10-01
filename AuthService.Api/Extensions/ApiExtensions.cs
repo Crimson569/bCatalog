@@ -3,6 +3,7 @@ using AuthService.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace AuthService.Api.Extensions;
 
@@ -24,6 +25,32 @@ public static class ApiExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SecretKey))
                 };
             });
+
+        services.AddSwaggerGen(options =>
+        {
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "Введите токен в формате: Bearer {токен}"
+            });
+            
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {{
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Id = "Bearer", 
+                        Type = ReferenceType.SecurityScheme
+                    },
+                },
+                new List<string>()
+            }});
+        });
 
         services.AddAuthorization();
         
