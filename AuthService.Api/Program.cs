@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using AuthService.Api.Extensions;
 using AuthService.Application.Extensions;
 using AuthService.Infrastructure.Extensions;
 using AuthService.Infrastructure.Options;
@@ -11,6 +12,8 @@ builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOpti
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
+
+builder.Services.AddApiAuthentication(builder.Configuration);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
