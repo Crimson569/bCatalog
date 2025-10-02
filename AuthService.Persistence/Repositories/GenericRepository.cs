@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using AuthService.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<T>().FindAsync([id], cancellationToken);
+    }
+
+    public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Set<T>().FirstAsync(filter, cancellationToken);
     }
 
     public async Task CreateAsync(T entity, CancellationToken cancellationToken = default)
