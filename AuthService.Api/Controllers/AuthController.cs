@@ -16,7 +16,7 @@ public class AuthController : ControllerBase
     {
         _mediator = mediator;
     }
-
+    
     [HttpGet]
     [Route("users")]
     public async Task<ActionResult> GetAllUsersAsync(CancellationToken cancellationToken)
@@ -40,6 +40,25 @@ public class AuthController : ControllerBase
         var result = await _mediator.Send(new CreateUserCommand() { UserDto = userDto }, cancellationToken);
         return Ok(result); //Заменить на Created
     }
+
+    [HttpPost]
+    [Route("users/login/email")]
+    public async Task<ActionResult> LoginAsync([FromBody] UserLoginWithEmailDto userDto,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new LoginUserWithEmailCommand() { UserDto = userDto }, cancellationToken);
+        return Ok(result);
+    }
+    
+    [HttpPost]
+    [Route("users/login/username")]
+    public async Task<ActionResult> LoginAsync([FromBody] UserLoginWithUsernameDto userDto,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new LoginUserWithUsernameCommand() { UserDto = userDto }, cancellationToken);
+        return Ok(result);
+    }
+
 
     [HttpPut]
     [Route("users/{id:guid}")]
