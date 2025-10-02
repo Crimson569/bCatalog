@@ -52,10 +52,10 @@ public class AuthController : ControllerBase
     
     [HttpPost]
     [Route("users/login/username")]
-    public async Task<ActionResult> LoginAsync([FromBody] UserLoginWithUsernameDto userDto,
+    public async Task<ActionResult> LoginAsync([FromBody] UserLoginWithUserNameDto userDto,
         CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new LoginUserWithUsernameCommand() { UserDto = userDto }, cancellationToken);
+        var result = await _mediator.Send(new LoginUserWithUserNameCommand() { UserDto = userDto }, cancellationToken);
         return Ok(result);
     }
 

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Users.Requests.Commands;
 
-public class LoginUserWithUsernameCommand : IRequest<Result<string>>
+public class LoginUserWithUserNameCommand : IRequest<Result<string>>
 {
-    public UserLoginWithUsernameDto UserDto { get; set; }
+    public UserLoginWithUserNameDto UserDto { get; set; }
 }

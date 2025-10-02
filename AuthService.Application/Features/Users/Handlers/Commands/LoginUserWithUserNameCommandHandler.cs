@@ -6,20 +6,20 @@ using MediatR;
 
 namespace AuthService.Application.Features.Users.Handlers.Commands;
 
-public class LoginUserWithUsernameCommandHandler : IRequestHandler<LoginUserWithUsernameCommand, Result<string>>
+public class LoginUserWithUserNameCommandHandler : IRequestHandler<LoginUserWithUserNameCommand, Result<string>>
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
     private readonly IJwtProvider _jwtProvider;
     
-    public LoginUserWithUsernameCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtProvider jwtProvider)
+    public LoginUserWithUserNameCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtProvider jwtProvider)
     {
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
         _jwtProvider = jwtProvider;
     }
     
-    public async Task<Result<string>> Handle(LoginUserWithUsernameCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(LoginUserWithUserNameCommand request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetByFilterAsync(u => u.UserName == request.UserDto.Username, cancellationToken);
 
