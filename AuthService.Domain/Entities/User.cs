@@ -5,7 +5,7 @@ public class User : BaseEntity
     private string _userName;
     private string _userEmail;
     private string _passwordHash;
-    private List<Role> _roles;
+    private List<Role> _roles = new List<Role>();
     
     public User(Guid id, string userName, string userEmail, string passwordHash) : base(id)
     {

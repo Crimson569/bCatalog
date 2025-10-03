@@ -60,7 +60,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost]
-    [Route("users/{id:guid}/roles")]
+    [Route("users/{userId:guid}/roles")]
     public async Task<ActionResult> AddRoleToUserAsync(Guid userId, [FromBody] UserAddRoleDto userAddRoleDto,
         CancellationToken cancellationToken)
     {
@@ -76,7 +76,7 @@ public class AuthController : ControllerBase
     }
     
     [HttpDelete]
-    [Route("users/{id:guid}/roles")]
+    [Route("users/{userId:guid}/roles")]
     public async Task<ActionResult> RemoveRoleFromUserAsync(Guid userId, [FromBody] UserRemoveRoleDto userRemoveRoleDto,
         CancellationToken cancellationToken)
     {
