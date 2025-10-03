@@ -59,7 +59,38 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
 
+    [HttpPost]
+    [Route("users/{id:guid}/roles")]
+    public async Task<ActionResult> AddRoleToUserAsync(Guid userId, [FromBody] UserAddRoleDto userAddRoleDto,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(
+            new AddRoleToUserCommand()
+            {
+                UserId = userId,
+                UserAddRoleDto = userAddRoleDto
+            }, 
+            cancellationToken);
 
+        return Ok(result);
+    }
+    
+    [HttpDelete]
+    [Route("users/{id:guid}/roles")]
+    public async Task<ActionResult> RemoveRoleFromUserAsync(Guid userId, [FromBody] UserRemoveRoleDto userRemoveRoleDto,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(
+            new RemoveRoleFromUserCommand()
+            {
+                UserId = userId,
+                UserRemoveRoleDto = userRemoveRoleDto
+            }, 
+            cancellationToken);
+
+        return Ok(result);
+    }
+    
     [HttpPut]
     [Route("users/{id:guid}")]
     public async Task<ActionResult> UpdateUserAsync([FromBody] UserUpdateDto userDto,

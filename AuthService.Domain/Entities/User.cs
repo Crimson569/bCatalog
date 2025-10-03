@@ -56,4 +56,16 @@ public class User : BaseEntity
         PasswordHash = newPasswordHash;
         return this;
     }
+
+    public User AddRole(Role role)
+    {
+        _roles.Add(role);
+        return this;
+    }
+
+    public User RemoveRoleIfBelongs(Role role) //Добавить валидацию
+    { 
+        _roles.Remove(role);
+        return this;
+    }
 }
