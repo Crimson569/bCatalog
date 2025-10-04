@@ -13,12 +13,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         _dbContext = dbContext;
     }
 
-    public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
+    public virtual async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<T>().ToListAsync(cancellationToken);
     }
 
-    public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<T>().FindAsync([id], cancellationToken);
     }
