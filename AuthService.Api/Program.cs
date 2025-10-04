@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using AuthService.Api.Extensions;
 using AuthService.Application.Extensions;
 using AuthService.Infrastructure.Extensions;
