@@ -14,6 +14,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(r => r.Id).ValueGeneratedOnAdd();
 
         builder.Property(r => r.RoleName).IsRequired();
+        builder.HasIndex(r => r.RoleName).IsUnique();
         
         builder.Property(r => r.CreatedAt).IsRequired();
         builder.Property(r => r.UpdatedAt).IsRequired();

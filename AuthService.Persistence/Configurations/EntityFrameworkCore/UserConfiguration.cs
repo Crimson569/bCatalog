@@ -11,10 +11,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.ToTable("users");
 
         builder.HasKey(u => u.Id);
-        builder.Property(u => u.Id).ValueGeneratedOnAdd();
 
         builder.Property(u => u.UserName).IsRequired();
+        builder.HasIndex(u => u.UserName).IsUnique();
+        
         builder.Property(u => u.UserEmail).IsRequired();
+        builder.HasIndex(u => u.UserEmail).IsUnique();
+        
         builder.Property(u => u.PasswordHash).IsRequired();
 
         builder.Property(u => u.CreatedAt).IsRequired();
