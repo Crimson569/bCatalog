@@ -33,7 +33,7 @@ public class LoginUserWithUserNameCommandHandler : IRequestHandler<LoginUserWith
 
         if (!passwordMatch)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.WrongPassword();
         }
 
         var token = _jwtProvider.GenerateToken(user);

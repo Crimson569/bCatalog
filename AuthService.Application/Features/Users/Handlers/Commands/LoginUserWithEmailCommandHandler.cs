@@ -33,7 +33,7 @@ public class LoginUserWithEmailCommandHandler : IRequestHandler<LoginUserWithEma
 
         if (!passwordMatch)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.WrongPassword();
         }
 
         var token = _jwtProvider.GenerateToken(user);
