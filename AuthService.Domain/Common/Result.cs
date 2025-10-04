@@ -41,6 +41,6 @@ public class Result<TValue>
     }
 
     public bool IsSuccess => _isSuccess;
-    public TValue? Value => _isSuccess ? _value! : throw new InvalidOperationException("Failed result doesn't have value");
+    public TValue? Value => _isSuccess ? _value! : default;
     public Error Error => !_isSuccess ? _error : Error.None;
 }

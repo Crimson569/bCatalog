@@ -1,6 +1,7 @@
 using AuthService.Application.Dto;
 using AuthService.Application.Features.Roles.Requests.Queries;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using AutoMapper;
 using MediatR;
@@ -21,6 +22,12 @@ public class GetRoleByIdRequestHandler : IRequestHandler<GetRoleByIdRequest, Res
     public async Task<Result<RoleDto>> Handle(GetRoleByIdRequest request, CancellationToken cancellationToken)
     {
         var role = await _roleRepository.GetByIdAsync(request.RoleId, cancellationToken);
+
+        if (role == null)
+        {
+            return ApplicationError.RoleWithIdNotFound(request.RoleId);
+        }
+        
         return _mapper.Map<RoleDto>(role);
     }
 }

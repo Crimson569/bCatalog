@@ -21,7 +21,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
 
     public override async Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var user = await _dbContext.Users.Include(u => u.Roles).FirstAsync(u => u.Id == id, cancellationToken);
+        var user = await _dbContext.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
         return user;
     }
 }

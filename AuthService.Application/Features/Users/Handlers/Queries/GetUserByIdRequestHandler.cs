@@ -1,6 +1,7 @@
 using AuthService.Application.Dto;
 using AuthService.Application.Features.Users.Requests.Queries;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using AutoMapper;
 using MediatR;
@@ -21,6 +22,12 @@ public class GetUserByIdRequestHandler : IRequestHandler<GetUserByIdRequest, Res
     public async Task<Result<UserDto>> Handle(GetUserByIdRequest request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
+
+        if (user == null)
+        {
+            return ApplicationError.UserWithIdNotFound(request.UserId);
+        }
+        
         return _mapper.Map<UserDto>(user);
     }
 }
