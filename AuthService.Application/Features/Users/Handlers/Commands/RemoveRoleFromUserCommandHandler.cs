@@ -37,7 +37,7 @@ public class RemoveRoleFromUserCommandHandler : IRequestHandler<RemoveRoleFromUs
         
         if (!user.Roles.Contains(role))
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserDoesNotHaveRole(role);
         }
 
         user.RemoveRoleIfBelongs(role);

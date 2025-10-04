@@ -37,7 +37,7 @@ public class AddRoleToUserCommandHandler : IRequestHandler<AddRoleToUserCommand,
 
         if (user.Roles.Contains(role))
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserAlreadyHaveRole(role);
         }
 
         user.AddRole(role);
