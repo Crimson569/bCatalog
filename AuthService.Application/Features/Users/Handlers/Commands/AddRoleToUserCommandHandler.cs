@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -24,14 +25,14 @@ public class AddRoleToUserCommandHandler : IRequestHandler<AddRoleToUserCommand,
 
         if (role == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.RoleWithIdNotFound(request.UserAddRoleDto.RoleId);
         }
 
         var user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
 
         if (user == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserWithIdNotFound(request.UserId);
         }
 
         if (user.Roles.Contains(role))

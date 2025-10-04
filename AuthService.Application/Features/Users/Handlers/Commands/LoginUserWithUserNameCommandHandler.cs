@@ -1,6 +1,7 @@
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Interfaces.Auth;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -25,7 +26,7 @@ public class LoginUserWithUserNameCommandHandler : IRequestHandler<LoginUserWith
 
         if (user == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserWithUserNameNotFound(request.UserDto.Username);
         }
 
         var passwordMatch = _passwordHasher.Verify(request.UserDto.Password, user.PasswordHash);

@@ -1,6 +1,7 @@
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Interfaces.Auth;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using AuthService.Domain.Entities;
 using MediatR;
@@ -26,7 +27,7 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Resul
 
         if (user == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserWithIdNotFound(request.UserDto.UserId);
         }
 
         var oldHashedPasswordIsMatch = _passwordHasher.Verify(request.UserDto.OldPassword, user.PasswordHash);
@@ -45,6 +46,6 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Resul
         _userRepository.Update(user);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return true; //Доделать после добавления аутентификации и авторизации
+        return true;
     }
 }

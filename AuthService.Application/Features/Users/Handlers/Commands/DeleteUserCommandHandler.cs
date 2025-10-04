@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Resul
 
         if (user == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserWithIdNotFound(request.UserId);
         }
         
         _userRepository.Remove(user);

@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Roles.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class DeleteRoleCommandHandler : IRequestHandler<DeleteRoleCommand, Resul
 
         if (role == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.RoleWithIdNotFound(request.RoleId);
         }
         
         _roleRepository.Remove(role);
