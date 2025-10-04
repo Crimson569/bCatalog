@@ -34,7 +34,7 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Resul
 
         if (!oldHashedPasswordIsMatch)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.UserWithIdNotFound(request.UserDto.UserId);
         }
 
         var newHashedPassword = _passwordHasher.GenerateHash(request.UserDto.NewPassword);
