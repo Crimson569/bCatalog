@@ -11,12 +11,15 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.ToTable("roles");
 
         builder.HasKey(r => r.Id);
-        builder.Property(r => r.Id).ValueGeneratedOnAdd();
 
         builder.Property(r => r.RoleName).IsRequired();
         builder.HasIndex(r => r.RoleName).IsUnique();
         
         builder.Property(r => r.CreatedAt).IsRequired();
         builder.Property(r => r.UpdatedAt).IsRequired();
+
+        builder
+            .HasMany(r => r.Permissions)
+            .WithMany(p => p.Roles);
     }
 }
