@@ -3,7 +3,9 @@ namespace AuthService.Domain.Entities;
 public class Role : BaseEntity
 {
     private string _roleName;
-    private List<User> _users;
+    private List<User> _users = new List<User>();
+    private List<Permission> _permissions = new List<Permission>();
+    
 
     public Role(Guid id, string roleName) : base(id)
     {
@@ -20,6 +22,7 @@ public class Role : BaseEntity
     }
 
     public IReadOnlyCollection<User> Users => _users;
+    public IReadOnlyCollection<Permission> Permissions => _permissions;
     
     public Role UpdateRole(string roleName)
     {
