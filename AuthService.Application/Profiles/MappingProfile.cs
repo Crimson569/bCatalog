@@ -13,5 +13,6 @@ public class MappingProfile : Profile
             opt.MapFrom(u => u.Roles.Select(r => new RoleDto(r.Id, r.RoleName)));
         });
         CreateMap<Role, RoleDto>();
+        CreateMap<Permission, PermissionDto>();
     }
 }

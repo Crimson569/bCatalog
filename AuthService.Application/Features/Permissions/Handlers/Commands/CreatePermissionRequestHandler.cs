@@ -1,0 +1,38 @@
+using AuthService.Application.Features.Permissions.Requests.Commands;
+using AuthService.Application.Interfaces.Repositories;
+using AuthService.Domain.Common;
+using AuthService.Domain.Entities;
+using MediatR;
+
+namespace AuthService.Application.Features.Permissions.Handlers.Commands;
+
+public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRequest, Result<bool>>
+{
+    private readonly IPermissionRepository _permissionRepository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CreatePermissionRequestHandler(IPermissionRepository permissionRepository, IUnitOfWork unitOfWork)
+    {
+        _permissionRepository = permissionRepository;
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<Result<bool>> Handle(CreatePermissionRequest request, CancellationToken cancellationToken)
+    {
+        var existingPermission = await _permissionRepository.GetByFilterAsync(
+            p => p.PermissionName == request.PermissionDto.PermissionName,
+            cancellationToken);
+
+        if (existingPermission != null)
+        {
+            return Error.None; //Добавить ошибку
+        }
+
+        var newPermission = new Permission(Guid.NewGuid(), request.PermissionDto.PermissionName);
+
+        await _permissionRepository.CreateAsync(newPermission, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+        return true;
+    }
+}
