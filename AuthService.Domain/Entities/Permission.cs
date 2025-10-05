@@ -5,8 +5,9 @@ public class Permission : BaseEntity
     private string _permissionName;
     private List<Role> _roles = new List<Role>();
     
-    public Permission(Guid id) : base(id)
+    public Permission(Guid id, string permissionName) : base(id)
     {
+        PermissionName = permissionName;
     }
 
     public string PermissionName
