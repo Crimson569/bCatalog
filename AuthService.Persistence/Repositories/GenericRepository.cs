@@ -25,7 +25,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
     public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Set<T>().FirstAsync(filter, cancellationToken);
+        return await _dbContext.Set<T>().FirstOrDefaultAsync(filter, cancellationToken);
     }
 
     public async Task CreateAsync(T entity, CancellationToken cancellationToken = default)
