@@ -42,6 +42,18 @@ public class RoleController : ControllerBase
         return Ok(result); //Заменить на Created
     }
 
+    [HttpPost]
+    [Route("roles/{roleId:guid}/permissions")]
+    public async Task<ActionResult> AddPermissionToRoleAsync(Guid roleId,
+        [FromBody] RoleAddPermissionDto roleAddPermissionDto, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(
+            new AddPermissionToRoleCommand() { RoleId = roleId, PermissionId = roleAddPermissionDto.PermissionId },
+            cancellationToken);
+
+        return Ok(result);
+    }
+
     [HttpPut]
     [Route("roles/{id:guid}")]
     public async Task<ActionResult> UpdateRoleAsync([FromBody] RoleCreateUpdateDto roleDto, Guid id,
@@ -56,6 +68,18 @@ public class RoleController : ControllerBase
     public async Task<ActionResult> DeleteRoleAsync(Guid id, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new DeleteRoleCommand() { RoleId = id }, cancellationToken);
+        return Ok(result);
+    }
+    
+    [HttpDelete]
+    [Route("roles/{roleId:guid}/permissions")]
+    public async Task<ActionResult> RemovePermissionFromRoleAsync(Guid roleId,
+        [FromBody] RoleRemovePermissionDto roleRemovePermissionDto, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(
+            new RemovePermissionFromRoleCommand() { RoleId = roleId, PermissionId = roleRemovePermissionDto.PermissionId },
+            cancellationToken);
+
         return Ok(result);
     }
     
