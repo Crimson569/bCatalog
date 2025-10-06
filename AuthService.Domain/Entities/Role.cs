@@ -29,4 +29,16 @@ public class Role : BaseEntity
         RoleName = roleName;
         return this;
     }
+
+    public Role AddPermission(Permission permission)
+    {
+        _permissions.Add(permission);
+        return this;
+    }
+
+    public Role RemovePermissionIfBelongs(Permission permission)
+    {
+        _permissions.Remove(permission);
+        return this;
+    }
 }
