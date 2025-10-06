@@ -1,4 +1,4 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.RoleDataTransferObjects;
 using AuthService.Domain.Common;
 using MediatR;
 

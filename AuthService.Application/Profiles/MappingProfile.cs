@@ -1,4 +1,6 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.PermissionDataTransferObjects;
+using AuthService.Application.Dto.RoleDataTransferObjects;
+using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Domain.Entities;
 using AutoMapper;
 

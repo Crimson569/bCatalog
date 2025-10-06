@@ -1,4 +1,4 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.RoleDataTransferObjects;
 using AuthService.Application.Features.Roles.Requests.Queries;
 using AuthService.Application.Interfaces.Repositories;
 using AuthService.Application.Primitives.Errors;

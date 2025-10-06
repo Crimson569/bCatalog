@@ -1,0 +1,3 @@
+namespace AuthService.Application.Dto.PermissionDataTransferObjects;
+
+public record PermissionCreateUpdateDto(string PermissionName);

@@ -1,4 +1,4 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Application.Features.Users.Requests.Queries;
 using AuthService.Application.Interfaces.Repositories;
 using AuthService.Domain.Common;
