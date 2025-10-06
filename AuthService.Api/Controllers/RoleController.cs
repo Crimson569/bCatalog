@@ -1,4 +1,4 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.RoleDataTransferObjects;
 using AuthService.Application.Features.Roles.Requests.Commands;
 using AuthService.Application.Features.Roles.Requests.Queries;
 using MediatR;

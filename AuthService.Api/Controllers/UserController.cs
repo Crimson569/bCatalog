@@ -1,4 +1,4 @@
-using AuthService.Application.Dto;
+using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Features.Users.Requests.Queries;
 using MediatR;
