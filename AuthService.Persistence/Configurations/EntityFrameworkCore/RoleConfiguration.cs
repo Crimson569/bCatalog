@@ -1,4 +1,5 @@
 using AuthService.Domain.Entities;
+using AuthService.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,6 +18,16 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         
         builder.Property(r => r.CreatedAt).IsRequired();
         builder.Property(r => r.UpdatedAt).IsRequired();
+
+        var roles = Enum
+            .GetValues<RoleEnum>()
+            .Select(r => new Role
+                (
+                    Guid.NewGuid(), 
+                    r.ToString()
+                ));
+
+        builder.HasData(roles);
 
         builder
             .HasMany(r => r.Permissions)

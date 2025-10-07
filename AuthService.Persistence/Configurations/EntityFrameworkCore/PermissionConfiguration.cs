@@ -1,4 +1,5 @@
 using AuthService.Domain.Entities;
+using AuthService.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,5 +15,16 @@ public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
 
         builder.Property(p => p.PermissionName).IsRequired();
         builder.HasIndex(p => p.PermissionName).IsUnique();
+
+        var permissions = Enum
+            .GetValues<PermissionEnum>()
+            .Select(p =>
+                new Permission
+                    (
+                        Guid.NewGuid(), 
+                        p.ToString()
+                    ));
+
+        builder.HasData(permissions);
     }
 }
