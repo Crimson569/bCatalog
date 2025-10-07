@@ -1,6 +1,6 @@
 namespace AuthService.Domain.Enums;
 
-public enum Permission
+public enum PermissionEnum
 {
     PostBook = 1,
     ReadBook = 2,

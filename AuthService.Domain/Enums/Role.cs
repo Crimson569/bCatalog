@@ -1,6 +1,6 @@
 namespace AuthService.Domain.Enums;
 
-public enum Role
+public enum RoleEnum
 {
     Admin = 1,
     Reader = 2
