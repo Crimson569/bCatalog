@@ -11,6 +11,8 @@ public class Role : BaseEntity
     {
         _roleName = roleName;
     }
+    
+    private Role (Guid id) : base(id) { }
 
     public string RoleName
     {

@@ -13,6 +13,8 @@ public class User : BaseEntity
         UserEmail = userEmail;
         PasswordHash = passwordHash;
     }
+    
+    private User(Guid id) : base(id) { } 
 
     public string UserName
     {

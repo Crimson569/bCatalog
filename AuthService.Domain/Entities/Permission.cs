@@ -9,6 +9,8 @@ public class Permission : BaseEntity
     {
         PermissionName = permissionName;
     }
+    
+    private Permission(Guid id) : base(id) { }
 
     public string PermissionName
     {
