@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AuthService.Application.Interfaces.Services;
 using AuthService.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -16,8 +17,7 @@ public class PermissionAuthorizationHandler : AuthorizationHandler<PermissionReq
 
     protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
     {
-        var userId = context.User.Claims.FirstOrDefault(
-            c => c.Type == CustomClaims.UserId);
+        var userId = context.User.FindFirst(ClaimTypes.NameIdentifier);
 
         if (userId is null || !Guid.TryParse(userId.Value, out var id))
         {
