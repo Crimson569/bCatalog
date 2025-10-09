@@ -1,5 +1,7 @@
 using AuthService.Application.Interfaces.Auth;
+using AuthService.Application.Interfaces.Services;
 using AuthService.Infrastructure.Implementations.Auth;
+using AuthService.Infrastructure.Implementations.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,7 @@ public static class DependencyInjectionConfiguration
     {
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IJwtProvider, JwtProvider>();
+        services.AddScoped<IPermissionService, PermissionService>();
         
         return services;
     }
