@@ -1,4 +1,6 @@
 using System.Text;
+using AuthService.Domain.Enums;
+using AuthService.Infrastructure.Implementations.Auth;
 using AuthService.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -52,7 +54,13 @@ public static class ApiExtensions
             }});
         });
 
-        services.AddAuthorization();
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("DeleteUsersPolicy", cfg =>
+            {
+                cfg.AddRequirements(new PermissionRequirement([PermissionEnum.DeleteUsers]));
+            });
+        });
         
         return services;
     }
