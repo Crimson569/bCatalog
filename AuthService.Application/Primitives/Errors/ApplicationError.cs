@@ -29,4 +29,10 @@ public static class ApplicationError
         new Error("Permission.AlreadyExists", $"Permission with id: {id} already exists.");
     
     public static Error WrongPassword() => new Error("User.WrongPassword", "Wrong password");
+
+    public static Error RoleDoesNotHavePermission(string roleName, string permissionName) =>
+        new Error("Role.DoesNotHavePermission", $"Role {roleName} already have permission: {permissionName}");
+    public static Error RoleAlreadyHavePermission(string roleName, string permissionName) =>
+        new Error("Role.AlreadyHavePermission", $"Role {roleName} already have permission: {permissionName}");
+    
 }

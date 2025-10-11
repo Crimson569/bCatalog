@@ -25,7 +25,7 @@ public class AddPermissionToRoleCommandHandler : IRequestHandler<AddPermissionTo
 
         if (permission == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithIdNotFound(request.PermissionId);
         }
 
         var role = await _roleRepository.GetByIdAsync(request.RoleId, cancellationToken);
@@ -37,7 +37,7 @@ public class AddPermissionToRoleCommandHandler : IRequestHandler<AddPermissionTo
 
         if (role.Permissions.Contains(permission))
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.RoleAlreadyHavePermission(role.RoleName, permission.PermissionName);
         }
 
         role.AddPermission(permission);
