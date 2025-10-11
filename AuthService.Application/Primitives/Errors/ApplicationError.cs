@@ -17,5 +17,16 @@ public static class ApplicationError
     public static Error RoleWithRoleNameNotFound(string roleName) => new Error("Role.NotFound", $"Role with username {roleName} not found.");
     public static Error RoleWithIdNotFound(Guid id) => new Error("Role.NotFound", $"Role with id {id} not found.");
 
+
+    public static Error PermissionWithNameNotFound(string permissionName) =>
+        new Error("Permission.NotFound", $"Permission with name: {permissionName} not found.");
+    public static Error PermissionWithIdNotFound(Guid id) =>
+        new Error("Permission.NotFound", $"Permission with id: {id} not found.");
+
+    public static Error PermissionWithNameAlreadyExists(string permissionName) =>
+        new Error("Permission.AlreadyExists", $"Permission with name: {permissionName} already exists.");
+    public static Error PermissionWithIdAlreadyExists(Guid id) =>
+        new Error("Permission.AlreadyExists", $"Permission with id: {id} already exists.");
+    
     public static Error WrongPassword() => new Error("User.WrongPassword", "Wrong password");
 }

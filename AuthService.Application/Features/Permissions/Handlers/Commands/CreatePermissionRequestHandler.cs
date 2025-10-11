@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Permissions.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using AuthService.Domain.Entities;
 using MediatR;
@@ -25,7 +26,7 @@ public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRe
 
         if (existingPermission != null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithNameAlreadyExists(request.PermissionDto.PermissionName);
         }
 
         var newPermission = new Permission(Guid.NewGuid(), request.PermissionDto.PermissionName);

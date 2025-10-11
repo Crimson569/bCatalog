@@ -1,6 +1,7 @@
 using AuthService.Application.Dto.PermissionDataTransferObjects;
 using AuthService.Application.Features.Permissions.Requests.Queries;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using AutoMapper;
 using MediatR;
@@ -24,7 +25,7 @@ public class GetPermissionByIdRequestHandler : IRequestHandler<GetPermissionById
 
         if (permission == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithIdNotFound(request.PermissionId);
         }
 
         return _mapper.Map<PermissionDto>(permission);

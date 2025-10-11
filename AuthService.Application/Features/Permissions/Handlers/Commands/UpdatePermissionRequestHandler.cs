@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Permissions.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class UpdatePermissionRequestHandler : IRequestHandler<UpdatePermissionRe
 
         if (permission == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithIdNotFound(request.PermissionId);
         }
         
         var existingPermission = await _permissionRepository.GetByFilterAsync(
@@ -31,7 +32,7 @@ public class UpdatePermissionRequestHandler : IRequestHandler<UpdatePermissionRe
 
         if (existingPermission != null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithNameAlreadyExists(request.PermissionDto.PermissionName);
         }
 
         permission.UpdatePermission(request.PermissionDto.PermissionName);

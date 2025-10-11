@@ -1,5 +1,6 @@
 using AuthService.Application.Features.Permissions.Requests.Commands;
 using AuthService.Application.Interfaces.Repositories;
+using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class DeletePermissionRequestHandler : IRequestHandler<DeletePermissionRe
 
         if (permission == null)
         {
-            return Error.None; //Добавить ошибку
+            return ApplicationError.PermissionWithIdNotFound(request.PermissionId);
         }
         
         _permissionRepository.Remove(permission);
