@@ -60,6 +60,11 @@ public static class ApiExtensions
             {
                 cfg.AddRequirements(new PermissionRequirement([PermissionEnum.DeleteUsers]));
             });
+            options.AddPolicy("UpdateUsersPolicy", cfg =>
+            {
+                cfg.AddRequirements(new PermissionRequirement([PermissionEnum.UpdateUsers]));
+            });
+            
         });
         
         return services;

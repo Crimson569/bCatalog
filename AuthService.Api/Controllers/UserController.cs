@@ -68,6 +68,7 @@ public class UserController : ControllerBase
     }
     
     [HttpPut]
+    [Authorize(policy: "UpdateUsersPolicy")]
     [Route("users/{id:guid}")]
     public async Task<ActionResult> UpdateUserAsync([FromBody] UserUpdateDto userDto,
         CancellationToken cancellationToken)
