@@ -9,5 +9,13 @@ public enum PermissionEnum
     CreateUser = 5,
     GetUsers = 6,
     UpdateUsers = 7,
-    DeleteUsers = 8
+    DeleteUsers = 8,
+    CreateRole = 9,
+    GetRoles = 10,
+    UpdateRoles = 11,
+    DeleteRoles = 12,
+    CreatePermission = 13,
+    GetPermissions = 14,
+    UpdatePermissions = 15,
+    DeletePermissions = 16
 }
