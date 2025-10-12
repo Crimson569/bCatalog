@@ -2,6 +2,7 @@ using AuthService.Application.Dto.RoleDataTransferObjects;
 using AuthService.Application.Features.Roles.Requests.Commands;
 using AuthService.Application.Features.Roles.Requests.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Api.Controllers;
@@ -55,6 +56,7 @@ public class RoleController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(policy: "UpdateRolesPolicy")]
     [Route("roles/{id:guid}")]
     public async Task<ActionResult> UpdateRoleAsync([FromBody] RoleCreateUpdateDto roleDto, Guid id,
         CancellationToken cancellationToken)
@@ -72,6 +74,7 @@ public class RoleController : ControllerBase
     }
     
     [HttpDelete]
+    [Authorize(policy: "DeleteRolesPolicy")]
     [Route("roles/{roleId:guid}/permissions")]
     public async Task<ActionResult> RemovePermissionFromRoleAsync(Guid roleId,
         [FromBody] RoleRemovePermissionDto roleRemovePermissionDto, CancellationToken cancellationToken)

@@ -2,6 +2,7 @@ using AuthService.Application.Dto.PermissionDataTransferObjects;
 using AuthService.Application.Features.Permissions.Requests.Commands;
 using AuthService.Application.Features.Permissions.Requests.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Api.Controllers;
@@ -45,6 +46,7 @@ public class PermissionController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(policy: "UpdatePermissionsPolicy")]
     [Route("permissions/{id:guid}")]
     public async Task<ActionResult> UpdatePermissionAsync(Guid id, [FromBody] PermissionCreateUpdateDto permissionDto,
         CancellationToken cancellationToken)
@@ -57,6 +59,7 @@ public class PermissionController : ControllerBase
     }
 
     [HttpDelete]
+    [Authorize(policy: "DeletePermissionsPolicy")]
     [Route("permissions/{id:guid}")]
     public async Task<ActionResult> DeletePermissionAsync(Guid id, CancellationToken cancellationToken)
     {
