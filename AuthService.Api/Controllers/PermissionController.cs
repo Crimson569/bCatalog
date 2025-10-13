@@ -27,7 +27,7 @@ public class PermissionController : ControllerBase
     }
 
     [HttpGet]
-    [Route("permissions/{id:guid}")]
+    [Route("permissions/{id:guid}", Name = "GetPermissionById")]
     public async Task<ActionResult> GetPermissionByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetPermissionByIdRequest() { PermissionId = id }, cancellationToken);
@@ -42,7 +42,11 @@ public class PermissionController : ControllerBase
         var result = await _mediator.Send(new CreatePermissionRequest() { PermissionDto = permissionDto },
             cancellationToken);
 
-        return Ok(result); //Заменить на Created
+        return CreatedAtRoute(
+            routeName: "GetPermissionById",
+            routeValues: new { id = result.Value },
+            value: result
+            );
     }
 
     [HttpPut]

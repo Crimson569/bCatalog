@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Users.Requests.Commands;
 
-public class CreateUserCommand : IRequest<Result<bool>>
+public class CreateUserCommand : IRequest<Result<Guid>>
 {
     public UserCreateDto UserDto { get; set; }
 }

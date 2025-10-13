@@ -27,7 +27,7 @@ public class RoleController : ControllerBase
     }
 
     [HttpGet]
-    [Route("roles/{id:guid}")]
+    [Route("roles/{id:guid}", Name = "GetRoleById")]
     public async Task<ActionResult> GetRoleByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetRoleByIdRequest() { RoleId = id }, cancellationToken);
@@ -40,7 +40,11 @@ public class RoleController : ControllerBase
         CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new CreateRoleCommand() { RoleDto = roleDto }, cancellationToken);
-        return Ok(result); //Заменить на Created
+        return CreatedAtRoute(
+            routeName: "GetRoleById",
+            routeValues: new { id = result.Value },
+            value: result
+        );
     }
 
     [HttpPost]

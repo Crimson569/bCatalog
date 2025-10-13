@@ -7,7 +7,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Permissions.Handlers.Commands;
 
-public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRequest, Result<bool>>
+public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRequest, Result<Guid>>
 {
     private readonly IPermissionRepository _permissionRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -18,7 +18,7 @@ public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRe
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result<bool>> Handle(CreatePermissionRequest request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreatePermissionRequest request, CancellationToken cancellationToken)
     {
         var existingPermission = await _permissionRepository.GetByFilterAsync(
             p => p.PermissionName == request.PermissionDto.PermissionName,
@@ -34,6 +34,6 @@ public class CreatePermissionRequestHandler : IRequestHandler<CreatePermissionRe
         await _permissionRepository.CreateAsync(newPermission, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return true;
+        return newPermission.Id;
     }
 }

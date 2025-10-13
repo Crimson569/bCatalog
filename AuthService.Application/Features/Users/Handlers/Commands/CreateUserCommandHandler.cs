@@ -7,7 +7,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Users.Handlers.Commands;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result<bool>>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result<Guid>>
 {
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Resul
         _passwordHasher = passwordHasher;
     }
 
-    public async Task<Result<bool>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         //Провалидировать email на уникальность 
         
@@ -35,6 +35,6 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Resul
         await _userRepository.CreateAsync(newUser, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return true; 
+        return newUser.Id; 
     }
 }

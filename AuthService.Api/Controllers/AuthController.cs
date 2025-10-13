@@ -21,7 +21,11 @@ public class AuthController : ControllerBase
     public async Task<ActionResult> CreateUserAsync([FromBody] UserCreateDto userDto, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new CreateUserCommand() { UserDto = userDto }, cancellationToken);
-        return Ok(result); //Заменить на Created
+        return CreatedAtRoute(
+            routeName: "GetUserById",
+            routeValues: new { id = result.Value },
+            value: result
+            );
     }
 
     [HttpPost]
@@ -39,6 +43,6 @@ public class AuthController : ControllerBase
         CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new LoginUserWithUserNameCommand() { UserDto = userDto }, cancellationToken);
-        return Ok(result);
+        return CreatedAtRoute("GetUserById", result);
     }
 }

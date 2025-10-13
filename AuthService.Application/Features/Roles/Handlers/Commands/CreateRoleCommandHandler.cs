@@ -6,7 +6,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Roles.Handlers.Commands;
 
-public class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand, Result<bool>>
+public class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand, Result<Guid>>
 {
     private readonly IRoleRepository _roleRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,12 +17,12 @@ public class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand, Resul
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result<bool>> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
         var newRole = new Role(Guid.NewGuid(), request.RoleDto.RoleName);
         await _roleRepository.CreateAsync(newRole, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return true;
+        return newRole.Id;
     }
 }

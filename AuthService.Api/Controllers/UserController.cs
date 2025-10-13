@@ -28,7 +28,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("users/{id:guid}")]
+    [Route("users/{id:guid}", Name = "GetUserById")]
     public async Task<ActionResult> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetUserByIdRequest(){UserId = id}, cancellationToken);

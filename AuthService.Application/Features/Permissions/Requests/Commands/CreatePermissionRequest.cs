@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Permissions.Requests.Commands;
 
-public class CreatePermissionRequest : IRequest<Result<bool>>
+public class CreatePermissionRequest : IRequest<Result<Guid>>
 {
     public PermissionCreateUpdateDto PermissionDto { get; set; }
 }

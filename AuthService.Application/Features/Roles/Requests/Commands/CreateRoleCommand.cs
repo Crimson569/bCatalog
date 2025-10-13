@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AuthService.Application.Features.Roles.Requests.Commands;
 
-public class CreateRoleCommand : IRequest<Result<bool>>
+public class CreateRoleCommand : IRequest<Result<Guid>>
 {
     public RoleCreateUpdateDto RoleDto { get; set; }
 }
