@@ -1,1 +1,31 @@
-﻿
+﻿services:
+  authservice.api:
+    build:
+      context: .
+      dockerfile: AuthService.Api/Dockerfile
+    depends_on:
+      - postgres-auth
+    ports:
+      - "${POSTGRES_AUTH_PORT}:${POSTGRES_AUTH_INTERNAL_PORT}"
+    volumes:
+      - db_auth_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+      
+  postgres-auth:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: ${POSTGRES_AUTHSERVICE_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_AUTHSERVICE_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_AUTHSERVICE_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5430:5433"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+    
+volumes:
+  db_auth_data:
+    
+
