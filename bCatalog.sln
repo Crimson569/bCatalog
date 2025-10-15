@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Infrastructure", "AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Migrator", "AuthService.Migrator\AuthService.Migrator.csproj", "{275F75F1-61EF-47BE-9655-B61C427FF0C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,7 @@ Global
 		{E2226B68-55E0-44B2-A25B-1A6EA2110F9E} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 		{114C8F87-A643-4211-AFDA-955A13802999} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 		{AE7CBFA7-49B2-469E-9B5B-0D4319775C54} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
+		{275F75F1-61EF-47BE-9655-B61C427FF0C8} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,5 +53,9 @@ Global
 		{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{275F75F1-61EF-47BE-9655-B61C427FF0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275F75F1-61EF-47BE-9655-B61C427FF0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275F75F1-61EF-47BE-9655-B61C427FF0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275F75F1-61EF-47BE-9655-B61C427FF0C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
