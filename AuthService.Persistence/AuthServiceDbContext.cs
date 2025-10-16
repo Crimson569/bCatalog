@@ -1,6 +1,7 @@
 using AuthService.Domain.Entities;
 using AuthService.Persistence.Configurations.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Options;
 
 namespace AuthService.Persistence;
@@ -22,5 +23,11 @@ public class AuthServiceDbContext : DbContext
         builder.ApplyConfigurationsFromAssembly(typeof(AuthServiceDbContext).Assembly);
 
         builder.ApplyConfiguration(new RolePermissionConfiguration(_authOptions.Value));
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.ConfigureWarnings(w => 
+            w.Ignore(RelationalEventId.PendingModelChangesWarning));
     }
 }
