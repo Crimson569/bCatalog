@@ -25,7 +25,7 @@ public static class DependencyInjectionConfiguration
 
         services.AddMinio(options =>
             options.WithCredentials(minioOptions!.AccessKey, minioOptions.SecretKey)
-                .WithEndpoint(minioOptions.Enpoint)
+                .WithEndpoint(minioOptions.Endpoint)
                 .WithSSL());
         
         
