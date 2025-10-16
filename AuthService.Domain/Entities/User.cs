@@ -5,6 +5,7 @@ public class User : BaseEntity
     private string _userName;
     private string _userEmail;
     private string _passwordHash;
+    private string _userAvatar;
     private List<Role> _roles = new List<Role>();
     
     public User(Guid id, string userName, string userEmail, string passwordHash) : base(id)
@@ -37,6 +38,15 @@ public class User : BaseEntity
         private set
         {
             _passwordHash = value; 
+        }
+    }
+    
+    public string UserAvatar
+    {
+        get => _userAvatar;
+        private set
+        {
+            _userAvatar = value; 
         }
     }
     public IReadOnlyCollection<Role> Roles => _roles;
