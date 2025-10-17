@@ -1,5 +1,6 @@
 using AuthService.Api.Extensions;
 using AuthService.Application.Extensions;
+using AuthService.Application.Interfaces.Files;
 using AuthService.Infrastructure.Extensions;
 using AuthService.Infrastructure.Options;
 using AuthService.Persistence;
@@ -46,5 +47,11 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    var scope = app.Services.CreateScope();
+    scope.ServiceProvider.GetRequiredService<IBucketService>().CreateBucketAsync();
+});
 
 app.Run();

@@ -1,6 +1,8 @@
 using AuthService.Application.Interfaces.Auth;
+using AuthService.Application.Interfaces.Files;
 using AuthService.Application.Interfaces.Services;
 using AuthService.Infrastructure.Implementations.Auth;
+using AuthService.Infrastructure.Implementations.Files;
 using AuthService.Infrastructure.Implementations.Services;
 using AuthService.Infrastructure.Options;
 using Microsoft.AspNetCore.Authorization;
@@ -28,6 +30,8 @@ public static class DependencyInjectionConfiguration
                 .WithEndpoint(minioOptions.Endpoint)
                 .WithSSL()
                 .Build());
+
+        services.AddScoped<IBucketService, BucketService>();
         
         
         return services; 
