@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
+using Shared.Interfaces;
 
 namespace AuthService.Infrastructure.Extensions;
 
@@ -32,6 +33,7 @@ public static class DependencyInjectionConfiguration
                 .Build());
 
         services.AddScoped<IBucketService, BucketService>();
+        services.AddScoped<IFileService, FileService>();
         
         
         return services; 
