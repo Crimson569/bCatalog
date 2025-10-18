@@ -80,4 +80,10 @@ public class User : BaseEntity
         _roles.Remove(role);
         return this;
     }
+
+    public User SetAvatar(string path)
+    {
+        UserAvatar = path;
+        return this;
+    }
 }
