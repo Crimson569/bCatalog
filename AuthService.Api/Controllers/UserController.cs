@@ -50,6 +50,15 @@ public class UserController : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpPost]
+    [Route("users/{userId:guid}/avatar")]
+    public async Task<ActionResult> SetUserAvatarAsync(Guid userId, IFormFile avatar, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new SetUserAvatarCommand { UserId = userId, Avatar = avatar },
+            cancellationToken);
+        return Ok(result);
+    }
     
     [HttpDelete]
     [Route("users/{userId:guid}/roles")]

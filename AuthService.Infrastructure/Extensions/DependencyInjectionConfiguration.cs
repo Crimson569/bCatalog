@@ -29,7 +29,7 @@ public static class DependencyInjectionConfiguration
         services.AddMinio(options =>
             options.WithCredentials(minioOptions!.AccessKey, minioOptions.SecretKey)
                 .WithEndpoint(minioOptions.Endpoint)
-                .WithSSL()
+                .WithSSL(false)
                 .Build());
 
         services.AddScoped<IBucketService, BucketService>();

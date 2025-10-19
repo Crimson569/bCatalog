@@ -12,6 +12,9 @@
     environment:
       - ConnectionStrings__DefaultConnection=${AUTHSERVICE_CONNECTION_STRING}
       - ASPNETCORE_URLS=http://+:${AUTHSERVICE_INTERNAL_PORT}
+      - MinioOptions__Endpoint=${MINIO_ENDPOINT}
+      - MinioOptions__AccessKey=${MINIO_ACCESS}
+      - MinioOptions__SecretKey=${MINIO_SECRET}
     volumes:
       - db_auth_data:/var/lib/postgresql/data
     env_file:
