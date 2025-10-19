@@ -11,6 +11,7 @@
       - "${AUTHSERVICE_PORT}:${AUTHSERVICE_INTERNAL_PORT}"
     environment:
       - ConnectionStrings__DefaultConnection=${AUTHSERVICE_CONNECTION_STRING}
+      - ASPNETCORE_URLS=http://+:${AUTHSERVICE_INTERNAL_PORT}
     volumes:
       - db_auth_data:/var/lib/postgresql/data
     env_file:
