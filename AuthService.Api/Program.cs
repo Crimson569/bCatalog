@@ -1,10 +1,13 @@
 using AuthService.Api.Extensions;
+using AuthService.Api.Validators.Users;
 using AuthService.Application.Extensions;
 using AuthService.Application.Interfaces.Files;
 using AuthService.Infrastructure.Extensions;
 using AuthService.Infrastructure.Options;
 using AuthService.Persistence;
 using AuthService.Persistence.Extensions;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,10 @@ builder.Services.AddPersistenceServices(builder.Configuration);
 
 builder.Services.AddApiAuthentication(builder.Configuration);
 builder.Services.AddApiCors();
+
+builder.Services.AddValidatorsFromAssemblyContaining<UserCreateDtoValidator>();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
