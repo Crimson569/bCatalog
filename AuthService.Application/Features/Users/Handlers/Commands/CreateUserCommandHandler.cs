@@ -22,8 +22,6 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Resul
 
     public async Task<Result<Guid>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        //Провалидировать email на уникальность 
-        
         var hashedPassword = _passwordHasher.GenerateHash(request.UserDto.Password);
 
         var newUser = new User(

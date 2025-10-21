@@ -3,7 +3,6 @@ using AuthService.Application.Interfaces.Auth;
 using AuthService.Application.Interfaces.Repositories;
 using AuthService.Application.Primitives.Errors;
 using AuthService.Domain.Common;
-using AuthService.Domain.Entities;
 using MediatR;
 
 namespace AuthService.Application.Features.Users.Handlers.Commands;
