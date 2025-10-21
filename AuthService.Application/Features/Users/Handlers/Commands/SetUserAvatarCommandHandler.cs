@@ -29,7 +29,7 @@ public class SetUserAvatarCommandHandler : IRequestHandler<SetUserAvatarCommand,
             return ApplicationError.UserWithIdNotFound(request.UserId);
         }
 
-        var avatarPath = await _fileService.SaveFileAsync(request.Avatar);
+        var avatarPath = await _fileService.SaveFileAsync(request.UserSetAvatarDto.Avatar);
 
         user.SetAvatar(avatarPath);
         

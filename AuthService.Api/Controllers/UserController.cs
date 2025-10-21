@@ -53,9 +53,9 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route("users/{userId:guid}/avatar")]
-    public async Task<ActionResult> SetUserAvatarAsync(Guid userId, IFormFile avatar, CancellationToken cancellationToken)
+    public async Task<ActionResult> SetUserAvatarAsync(Guid userId, [FromForm]UserSetAvatarDto userSetAvatarDto, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new SetUserAvatarCommand { UserId = userId, Avatar = avatar },
+        var result = await _mediator.Send(new SetUserAvatarCommand { UserId = userId, UserSetAvatarDto = userSetAvatarDto },
             cancellationToken);
         return Ok(result);
     }
