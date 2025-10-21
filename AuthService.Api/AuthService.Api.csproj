@@ -34,9 +34,4 @@
       </Content>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Validators\Permissions\" />
-      <Folder Include="Validators\Roles\" />
-    </ItemGroup>
-
 </Project>
