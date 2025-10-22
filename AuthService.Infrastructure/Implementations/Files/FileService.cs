@@ -24,7 +24,7 @@ public class FileService : IFileService
         
         var objectName = string.IsNullOrWhiteSpace(folder) 
             ? file.FileName 
-            : $"{folder}/{file.FileName}";
+            : $"{folder}/{Guid.NewGuid()}";
         
         var contentType = file.ContentType ?? "application/octet-stream";
         
