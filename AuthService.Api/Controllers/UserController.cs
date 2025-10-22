@@ -1,3 +1,4 @@
+using AuthService.Api.Extensions;
 using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Features.Users.Requests.Queries;
@@ -55,6 +56,13 @@ public class UserController : ControllerBase
     [Route("users/{userId:guid}/avatar")]
     public async Task<ActionResult> SetUserAvatarAsync(Guid userId, [FromForm]UserSetAvatarDto userSetAvatarDto, CancellationToken cancellationToken)
     {
+        var currentUserId = HttpContext.GetCurrentUserId();
+
+        if (currentUserId == null || currentUserId != userId)
+        {
+            return Forbid();
+        }
+        
         var result = await _mediator.Send(new SetUserAvatarCommand { UserId = userId, UserSetAvatarDto = userSetAvatarDto },
             cancellationToken);
         return Ok(result);
