@@ -1,6 +1,5 @@
 using System.Security.Claims;
 using AuthService.Application.Interfaces.Services;
-using AuthService.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 

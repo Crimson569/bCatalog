@@ -1,4 +1,3 @@
-using BCrypt.Net;
 using AuthService.Application.Interfaces.Auth;
 
 namespace AuthService.Infrastructure.Implementations.Auth;

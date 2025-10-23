@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Application.Primitives.Patterns;
 

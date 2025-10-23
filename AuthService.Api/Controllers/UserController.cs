@@ -2,7 +2,6 @@ using AuthService.Api.Extensions;
 using AuthService.Application.Dto.UserDataTransferObjects;
 using AuthService.Application.Features.Users.Requests.Commands;
 using AuthService.Application.Features.Users.Requests.Queries;
-using AuthService.Infrastructure.Implementations.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
