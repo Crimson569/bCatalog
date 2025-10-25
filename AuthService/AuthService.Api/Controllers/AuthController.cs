@@ -43,6 +43,6 @@ public class AuthController : ControllerBase
         CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new LoginUserWithUserNameCommand() { UserDto = userDto }, cancellationToken);
-        return CreatedAtRoute("GetUserById", result);
+        return Ok(result);
     }
 }
