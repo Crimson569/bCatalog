@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using AuthService.Api;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
 using Testcontainers.Minio;
