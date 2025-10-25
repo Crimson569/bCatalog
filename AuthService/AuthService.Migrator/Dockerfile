@@ -5,10 +5,10 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthService.Migrator/AuthService.Migrator.csproj", "AuthService.Migrator/"]
-COPY ["AuthService.Persistence/AuthService.Persistence.csproj", "AuthService.Persistence/"]
-COPY ["AuthService.Application/AuthService.Application.csproj", "AuthService.Application/"]
-COPY ["AuthService.Domain/AuthService.Domain.csproj", "AuthService.Domain/"]
+COPY ["AuthService/AuthService.Migrator/AuthService.Migrator.csproj", "AuthService.Migrator/"]
+COPY ["AuthService/AuthService.Persistence/AuthService.Persistence.csproj", "AuthService.Persistence/"]
+COPY ["AuthService/AuthService.Application/AuthService.Application.csproj", "AuthService.Application/"]
+COPY ["AuthService/AuthService.Domain/AuthService.Domain.csproj", "AuthService.Domain/"]
 RUN dotnet restore "AuthService.Migrator/AuthService.Migrator.csproj"
 COPY . .
 WORKDIR "/src/AuthService.Migrator"

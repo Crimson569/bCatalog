@@ -2,22 +2,22 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthService", "AuthService", "{53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Domain", "AuthService.Domain\AuthService.Domain.csproj", "{A916C021-F680-435F-A228-7833E1B75CA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Domain", "AuthService\AuthService.Domain\AuthService.Domain.csproj", "{A916C021-F680-435F-A228-7833E1B75CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Application", "AuthService.Application\AuthService.Application.csproj", "{3FEA6B80-B75F-412B-825F-D4C882B64359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Application", "AuthService\AuthService.Application\AuthService.Application.csproj", "{3FEA6B80-B75F-412B-825F-D4C882B64359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Persistence", "AuthService.Persistence\AuthService.Persistence.csproj", "{E2226B68-55E0-44B2-A25B-1A6EA2110F9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Persistence", "AuthService\AuthService.Persistence\AuthService.Persistence.csproj", "{E2226B68-55E0-44B2-A25B-1A6EA2110F9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Api", "AuthService.Api\AuthService.Api.csproj", "{114C8F87-A643-4211-AFDA-955A13802999}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Api", "AuthService\AuthService.Api\AuthService.Api.csproj", "{114C8F87-A643-4211-AFDA-955A13802999}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C76881AA-6E7E-4214-8B39-BAF756AB26F8}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Infrastructure", "AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Infrastructure", "AuthService\AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{AE7CBFA7-49B2-469E-9B5B-0D4319775C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Migrator", "AuthService.Migrator\AuthService.Migrator.csproj", "{275F75F1-61EF-47BE-9655-B61C427FF0C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Migrator", "AuthService\AuthService.Migrator\AuthService.Migrator.csproj", "{275F75F1-61EF-47BE-9655-B61C427FF0C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared\Shared.csproj", "{C4727429-24EF-4AAB-92B1-1B3BFE488B1E}"
 EndProject
