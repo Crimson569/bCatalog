@@ -1,6 +1,8 @@
 using AuthService.Infrastructure.Options;
 using AuthService.Persistence;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -41,7 +43,38 @@ public class ApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
         .WithUsername(MinioUsername)
         .WithPassword(MinioPassword)
         .Build();
-    
+
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.ConfigureTestServices(services =>
+        {
+            {
+                var descriptor =
+                    services.SingleOrDefault(s => s.ServiceType == typeof(DbContextOptions<AuthServiceDbContext>));
+
+                if (descriptor != null)
+                {
+                    services.Remove(descriptor);
+                }
+
+                services.AddNpgsql<AuthServiceDbContext>(_postgresContainer.GetConnectionString());
+            }
+            {
+                var descriptor = services.SingleOrDefault(s => s.ServiceType == typeof(IMinioClient));
+
+                if (descriptor != null)
+                {
+                    services.Remove(descriptor);
+                }
+                
+                services.AddMinio(client => client
+                    .WithCredentials(_minioContainer.GetAccessKey(), _minioContainer.GetSecretKey())
+                    .WithEndpoint(_minioContainer.Hostname, _minioContainer.GetMappedPublicPort(MinioBuilder.MinioPort))
+                    .WithSSL(false));
+            }
+        });
+    }
+
     public async Task InitializeAsync()
     {
         await Task.WhenAll(_postgresContainer.StartAsync(), _minioContainer.StartAsync());
@@ -61,5 +94,7 @@ public class ApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
     {
         await _postgresContainer.DisposeAsync();
         await _minioContainer.DisposeAsync();
+        HttpClient.Dispose();
+        _scope.Dispose();
     }
 }
