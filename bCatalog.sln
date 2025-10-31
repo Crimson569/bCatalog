@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7842F05F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Integration", "AuthService\Tests\AuthService.Integration\AuthService.Integration.csproj", "{1A7DB46B-8E34-4955-87F5-ECF10D178F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Unit", "AuthService\Tests\AuthService.Unit\AuthService.Unit.csproj", "{ACE01E4D-1631-4B9D-9756-C430B4701B51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,7 @@ Global
 		{275F75F1-61EF-47BE-9655-B61C427FF0C8} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 		{7842F05F-5DFF-4212-B1B8-346E5EE750E8} = {53982AC6-D96C-4A3A-86FF-9DB3C095DFD8}
 		{1A7DB46B-8E34-4955-87F5-ECF10D178F70} = {7842F05F-5DFF-4212-B1B8-346E5EE750E8}
+		{ACE01E4D-1631-4B9D-9756-C430B4701B51} = {7842F05F-5DFF-4212-B1B8-346E5EE750E8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A916C021-F680-435F-A228-7833E1B75CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -73,5 +76,9 @@ Global
 		{1A7DB46B-8E34-4955-87F5-ECF10D178F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7DB46B-8E34-4955-87F5-ECF10D178F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7DB46B-8E34-4955-87F5-ECF10D178F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE01E4D-1631-4B9D-9756-C430B4701B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE01E4D-1631-4B9D-9756-C430B4701B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE01E4D-1631-4B9D-9756-C430B4701B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE01E4D-1631-4B9D-9756-C430B4701B51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
